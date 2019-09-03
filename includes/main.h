@@ -19,6 +19,13 @@
 # include <sys/types.h>
 # include <dirent.h>
 
-char	g_options;
+char			g_options;
+
+typedef struct stat	t_stat;
+typedef struct dirent	t_dirent;
+typedef struct passwd	t_passwd;
+typedef struct group	t_group;
+
+void			path_init(char *path);
 
 #endif

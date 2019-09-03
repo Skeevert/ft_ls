@@ -16,15 +16,15 @@ void	ft_option_save(char *str)
 {
 	while(*str)
 	{
-		if (str == 'l')
+		if (*str == 'l')
 			g_options |= 0x01;
-		else if (str == 'R')
+		else if (*str == 'R')
 			g_options |= 0x02;
-		else if (str == 'a')
+		else if (*str == 'a')
 			g_options |= 0x04;
-		else if (str == 'r')
+		else if (*str == 'r')
 			g_options |= 0x08;
-		else if (str == 't')
+		else if (*str == 't')
 			g_options |= 0x10;
 		str++;
 	}
@@ -47,13 +47,15 @@ int		main(int argc, char **argv)
 {
 	int		i;
 
-	g_flags = 0;
+	g_options = 0;
 	i = 1;
-	ft_option_init(argc, **argv);
+	ft_option_init(argc, argv);
+	if (argc < 2)
+		path_init(".");
 	while (i < argc)
 	{
 		if (argv[i][0] != '-' || !argv[i][1])
-			ft_path_init;
+			path_init(argv[i]);
 		i++;
 	}
 	return (0);

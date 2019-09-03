@@ -68,26 +68,17 @@ srcs/libft/ft_lstdelone.o \
 srcs/libft/ft_lstiter.o \
 srcs/libft/ft_lstmap.o \
 srcs/libft/ft_lstnew.o \
-srcs/ft_printf.o \
-srcs/ft_itoa64.o \
-srcs/parser.o \
-srcs/scp.o \
-srcs/diouxx.o \
-srcs/f_init.o \
-srcs/float/longarithmetic.o \
-srcs/float/printfloat.o \
-srcs/float/printnumber.o \
-srcs/float/prostonehvataetmesta.o \
-srcs/float/tolsforfloat.o \
-srcs/float/writefloat.o \
-srcs/float/writelongdouble.o \
 
-NAME = libftprintf.a
+SRCS = srcs/main.c \
+srcs/path.c
+
+NAME = libft.a
 
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
 	ar rc $@ $(OBJECTS)
+	gcc -Wall -Wextra -Werror $(SRCS) $@ -Iincludes -o ft_ls
 
 $(OBJECTS): %.o: %.c
 	gcc -c -Wall -Wextra -Werror $< -o $@ -Iincludes
