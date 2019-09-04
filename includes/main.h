@@ -6,7 +6,7 @@
 /*   By: hshawand <[hshawand@student.42.fr]>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 15:53:30 by hshawand          #+#    #+#             */
-/*   Updated: 2019/08/30 16:28:10 by hshawand         ###   ########.fr       */
+/*   Updated: 2019/09/04 13:10:12 by hshawand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,23 @@
 # include <sys/types.h>
 # include <dirent.h>
 
-char			g_options;
+char						g_options;
 
-typedef struct stat	t_stat;
+typedef struct stat		t_stat;
 typedef struct dirent	t_dirent;
 typedef struct passwd	t_passwd;
 typedef struct group	t_group;
 
-void			path_init(char *path);
+typedef struct 			s_entlist
+{
+	char				ent_name[256];
+	struct s_entlist	*next;
+}						t_entlist;
+
+void					path_init(char *path);
+
+t_entlist				*entity_new();
+void					entity_add(t_entlist **start, t_entlist *new);
+void					entity_free(t_entlist *start);
 
 #endif

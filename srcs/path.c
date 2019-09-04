@@ -1,56 +1,48 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   path.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hshawand <[hshawand@student.42.fr]>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/04 15:54:29 by hshawand          #+#    #+#             */
+/*   Updated: 2019/09/04 15:56:55 by hshawand         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "main.h"
 
-void	print_list(t_list *list)
+void	entity_print(t_entlist *list)
 {
-	t_dirent	*to_print;
 	while (list)
 	{
-		to_print = (t_dirent *)list->content;
-		ft_putstr("kek\n");
-
-		ft_putstr(to_print->d_name);
-		list->next ? write(1, " ", 1) : 0;
+		if (list->ent_name[0] != '.' || g_options & 0x04)
+		{
+			ft_putstr(list->ent_name);
+			list->next ? write(1, "\n", 1) : 0; /* Separator variable could be used to implement -l option */
+		}
 		list = list->next;
-	}
-}
-
-void	free_list(t_list *list)
-{
-	t_list *temp;
-	while (list)
-	{
-		temp = list;
-		list = list->next;
-		free(temp);
 	}
 }
 
 void	path_init(char *path)
 {
-	DIR		*folder;
+	DIR			*folder;
 	t_dirent	*entry;
-	t_list		*list;
-	t_list		*current;
+	t_entlist	*list;
+	t_entlist	*temp;
 
 	folder = opendir(path);
 	if (!folder)
 		return ; /* TODO: ADD ERROR MANAGEMENT */
+	list = 0;
 	while ((entry = readdir(folder))) /* Not sure if this works */
 	{
-		if (!list)
-		{
-			if (!(list = ft_lstnew(entry, sizeof(entry))))
-				return ;
-		}	
-		else
-		{
-			if (!(current = ft_lstnew(entry, sizeof(entry))))
-				return ;
-			ft_lstadd(&list, current);
-		}
+		temp = entity_new();
+		ft_strcpy(temp->ent_name, entry->d_name); /*Could be done with separate function */
+		entity_add(&list, temp);
 	}
-	ft_putstr("kek\n");
-	print_list(current);
-	free_list(current);
+	entity_print(list); /* TODO: ADD FLAG MANAGEMENT */
+	entity_free(list);
 	closedir(folder);
 }

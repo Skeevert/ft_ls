@@ -6,7 +6,7 @@
 #    By: hshawand <hshawand@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/04 16:37:05 by hshawand          #+#    #+#              #
-#    Updated: 2019/08/22 14:04:22 by hshawand         ###   ########.fr        #
+#    Updated: 2019/09/04 13:08:49 by hshawand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,15 +70,17 @@ srcs/libft/ft_lstmap.o \
 srcs/libft/ft_lstnew.o \
 
 SRCS = srcs/main.c \
-srcs/path.c
+srcs/path.c \
+srcs/lists.c
 
-NAME = libft.a
+LIB_NAME = libft.a
+NAME = ft_ls
 
-all: $(NAME)
+all: $(LIB_NAME)
 
-$(NAME): $(OBJECTS)
+$(LIB_NAME): $(OBJECTS)
 	ar rc $@ $(OBJECTS)
-	gcc -Wall -Wextra -Werror $(SRCS) $@ -Iincludes -o ft_ls
+	gcc -Wall -Wextra -Werror $(SRCS) $@ -Iincludes -o $(NAME)
 
 $(OBJECTS): %.o: %.c
 	gcc -c -Wall -Wextra -Werror $< -o $@ -Iincludes
@@ -86,5 +88,6 @@ $(OBJECTS): %.o: %.c
 clean:
 	rm -f $(OBJECTS)
 fclean: clean
+	rm -f $(LIB_NAME)
 	rm -f $(NAME)
 re: fclean all
