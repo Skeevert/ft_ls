@@ -6,11 +6,31 @@
 /*   By: hshawand <[hshawand@student.42.fr]>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 15:54:29 by hshawand          #+#    #+#             */
-/*   Updated: 2019/09/04 15:56:55 by hshawand         ###   ########.fr       */
+/*   Updated: 2019/09/04 17:17:47 by hshawand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
+
+void	recursion(t_entlist *list)
+{
+	if (ft_strcmp(list->ent_name, ".") && ft_strcmp(list->ent_name, ".."))
+	{
+		write(1, "\n", 1);
+		ft_putstr(list->ent_name);
+		write(1, ":\n", 2);
+		path_init(list->ent_name);
+	}
+}
+
+void	entity_fill(t_entlist *entity, t_dirent *entry)
+{
+	t_stat		stat;
+
+	lstat(entry->d_name, &stat);
+	strcpy(entity->ent_name, entry->d_name);
+	entity->ent_mode = stat.st_mode;
+}
 
 void	entity_print(t_entlist *list)
 {
@@ -39,8 +59,10 @@ void	path_init(char *path)
 	while ((entry = readdir(folder))) /* Not sure if this works */
 	{
 		temp = entity_new();
-		ft_strcpy(temp->ent_name, entry->d_name); /*Could be done with separate function */
+		entity_fill(temp, entry);
 		entity_add(&list, temp);
+		if (S_ISDIR(list->ent_mode) && g_options & 0x02)
+			recursion(list);
 	}
 	entity_print(list); /* TODO: ADD FLAG MANAGEMENT */
 	entity_free(list);

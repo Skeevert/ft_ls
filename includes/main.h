@@ -6,7 +6,7 @@
 /*   By: hshawand <[hshawand@student.42.fr]>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 15:53:30 by hshawand          #+#    #+#             */
-/*   Updated: 2019/09/04 13:10:12 by hshawand         ###   ########.fr       */
+/*   Updated: 2019/09/04 16:51:04 by hshawand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <sys/types.h>
+# include <sys/stat.h>
 # include <dirent.h>
 
 char						g_options;
@@ -29,6 +30,7 @@ typedef struct group	t_group;
 typedef struct 			s_entlist
 {
 	char				ent_name[256];
+	mode_t				ent_mode;
 	struct s_entlist	*next;
 }						t_entlist;
 
