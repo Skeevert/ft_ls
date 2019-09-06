@@ -6,7 +6,7 @@
 /*   By: hshawand <[hshawand@student.42.fr]>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 15:55:11 by hshawand          #+#    #+#             */
-/*   Updated: 2019/09/04 13:22:42 by hshawand         ###   ########.fr       */
+/*   Updated: 2019/09/06 15:57:39 by hshawand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int		main(int argc, char **argv)
 	{
 		if (argv[i][0] != '-' || !argv[i][1])
 		{
-			path_init(argv[i]);
+			path_init(argv[1]);
 			path_count++;
 		}
 		i++;

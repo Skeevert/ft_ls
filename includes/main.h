@@ -6,7 +6,7 @@
 /*   By: hshawand <[hshawand@student.42.fr]>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 15:53:30 by hshawand          #+#    #+#             */
-/*   Updated: 2019/09/04 16:51:04 by hshawand         ###   ########.fr       */
+/*   Updated: 2019/09/06 14:03:59 by hshawand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <dirent.h>
+# include <limits.h>
 
 char						g_options;
 

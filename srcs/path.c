@@ -6,20 +6,25 @@
 /*   By: hshawand <[hshawand@student.42.fr]>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 15:54:29 by hshawand          #+#    #+#             */
-/*   Updated: 2019/09/04 17:17:47 by hshawand         ###   ########.fr       */
+/*   Updated: 2019/09/06 15:58:29 by hshawand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-void	recursion(t_entlist *list)
+void	ft_recursion(t_entlist *new, char *path)
 {
-	if (ft_strcmp(list->ent_name, ".") && ft_strcmp(list->ent_name, ".."))
+	char	path_new[PATH_MAX];
+
+	ft_strcpy(path_new, path);
+	if (ft_strcmp(new->ent_name, ".") && ft_strcmp(new->ent_name, ".."))
 	{
-		write(1, "\n", 1);
-		ft_putstr(list->ent_name);
-		write(1, ":\n", 2);
-		path_init(list->ent_name);
+		if (ft_strlen(path_new) + ft_strlen(new->ent_name) + 1 < PATH_MAX)
+		{
+			ft_strcat(path_new, "/");
+			ft_strcat(path_new, new->ent_name);
+			path_init(path_new);
+		}
 	}
 }
 
@@ -60,9 +65,9 @@ void	path_init(char *path)
 	{
 		temp = entity_new();
 		entity_fill(temp, entry);
+		if ((temp->ent_mode & S_IFDIR) && (g_options & 0x02) && (ft_strcmp(temp->ent_name, ".") && ft_strcmp(temp->ent_name, "..")))
+			ft_recursion(temp, path);
 		entity_add(&list, temp);
-		if (S_ISDIR(list->ent_mode) && g_options & 0x02)
-			recursion(list);
 	}
 	entity_print(list); /* TODO: ADD FLAG MANAGEMENT */
 	entity_free(list);
