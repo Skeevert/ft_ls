@@ -6,7 +6,7 @@
 /*   By: hshawand <[hshawand@student.42.fr]>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 15:53:30 by hshawand          #+#    #+#             */
-/*   Updated: 2019/09/10 14:05:56 by hshawand         ###   ########.fr       */
+/*   Updated: 2019/09/10 15:05:08 by hshawand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct 			s_entlist
 {
 	char				ent_name[256];
 	mode_t				ent_mode;
+	time_t				time;
 	struct s_entlist	*next;
 }						t_entlist;
 

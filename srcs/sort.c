@@ -6,7 +6,7 @@
 /*   By: hshawand <[hshawand@student.42.fr]>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 13:34:24 by hshawand          #+#    #+#             */
-/*   Updated: 2019/09/10 14:05:59 by hshawand         ###   ########.fr       */
+/*   Updated: 2019/09/10 15:07:18 by hshawand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,16 @@
 
 int			list_cmp(t_entlist *a, t_entlist *b)
 {
+	int		result;
 	if (!(g_options & 0x10))
-		return(ft_strcmp(a->ent_name, b->ent_name));
+		result = ft_strcmp(a->ent_name, b->ent_name);
 	else
-		return (0); /* Placeholder. TODO: implement -t sort */
+	{
+		result = b->time - a->time;
+		if (!result)
+			result = ft_strcmp(a->ent_name, b->ent_name);
+	}
+	return (g_options & 0x08 ? -result : result);
 }
 
 void		front_back_split(t_entlist *source, t_entlist **front_ref,

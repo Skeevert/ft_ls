@@ -6,7 +6,7 @@
 /*   By: hshawand <[hshawand@student.42.fr]>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 15:54:29 by hshawand          #+#    #+#             */
-/*   Updated: 2019/09/10 14:04:36 by hshawand         ###   ########.fr       */
+/*   Updated: 2019/09/10 15:04:21 by hshawand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	entity_fill(t_entlist *entity, t_dirent *entry)
 	lstat(entry->d_name, &stat);
 	strcpy(entity->ent_name, entry->d_name);
 	entity->ent_mode = stat.st_mode;
+	entity->time = stat.st_mtime;
 }
 
 void	entity_print(t_entlist *list)
