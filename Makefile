@@ -6,7 +6,7 @@
 #    By: hshawand <hshawand@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/04 16:37:05 by hshawand          #+#    #+#              #
-#    Updated: 2019/09/04 13:08:49 by hshawand         ###   ########.fr        #
+#    Updated: 2019/09/10 14:04:57 by hshawand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,7 +71,8 @@ srcs/libft/ft_lstnew.o \
 
 SRCS = srcs/main.c \
 srcs/path.c \
-srcs/lists.c
+srcs/lists.c \
+srcs/sort.c
 
 LIB_NAME = libft.a
 NAME = ft_ls

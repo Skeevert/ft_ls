@@ -6,7 +6,7 @@
 /*   By: hshawand <[hshawand@student.42.fr]>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 15:54:29 by hshawand          #+#    #+#             */
-/*   Updated: 2019/09/06 15:58:29 by hshawand         ###   ########.fr       */
+/*   Updated: 2019/09/10 14:04:36 by hshawand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	path_init(char *path)
 			ft_recursion(temp, path);
 		entity_add(&list, temp);
 	}
+	merge_sort(&list);
 	entity_print(list); /* TODO: ADD FLAG MANAGEMENT */
 	entity_free(list);
 	closedir(folder);

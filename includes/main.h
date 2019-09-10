@@ -6,7 +6,7 @@
 /*   By: hshawand <[hshawand@student.42.fr]>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 15:53:30 by hshawand          #+#    #+#             */
-/*   Updated: 2019/09/06 14:03:59 by hshawand         ###   ########.fr       */
+/*   Updated: 2019/09/10 14:05:56 by hshawand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,6 @@ void					path_init(char *path);
 t_entlist				*entity_new();
 void					entity_add(t_entlist **start, t_entlist *new);
 void					entity_free(t_entlist *start);
+void					merge_sort(t_entlist **head_ref);
 
 #endif
