@@ -6,7 +6,7 @@
 /*   By: hshawand <[hshawand@student.42.fr]>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 15:54:29 by hshawand          #+#    #+#             */
-/*   Updated: 2019/09/10 15:04:21 by hshawand         ###   ########.fr       */
+/*   Updated: 2019/09/10 15:37:29 by hshawand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,17 @@ void	path_init(char *path)
 	{
 		temp = entity_new();
 		entity_fill(temp, entry);
-		if ((temp->ent_mode & S_IFDIR) && (g_options & 0x02) && (ft_strcmp(temp->ent_name, ".") && ft_strcmp(temp->ent_name, "..")))
-			ft_recursion(temp, path);
 		entity_add(&list, temp);
 	}
 	merge_sort(&list);
 	entity_print(list); /* TODO: ADD FLAG MANAGEMENT */
+	temp = list;
+	while (temp)
+	{
+		if (temp->ent_mode & S_IFDIR && g_options & 0x02)
+			ft_recursion(temp, path);
+		temp = temp->next;
+	}
 	entity_free(list);
 	closedir(folder);
 }
