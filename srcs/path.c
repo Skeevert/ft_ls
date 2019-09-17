@@ -6,7 +6,7 @@
 /*   By: hshawand <[hshawand@student.42.fr]>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 15:54:29 by hshawand          #+#    #+#             */
-/*   Updated: 2019/09/12 15:24:12 by hshawand         ###   ########.fr       */
+/*   Updated: 2019/09/17 16:21:02 by hshawand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	ft_recursion(t_entlist *new, char *path)
 void	entity_fill(t_entlist *entity, t_dirent *entry)
 {
 	t_stat		stat;
+	size_t		len;
+	char 		*temp;
 
 	lstat(entry->d_name, &stat);
 	strcpy(entity->ent_name, entry->d_name);
@@ -41,6 +43,18 @@ void	entity_fill(t_entlist *entity, t_dirent *entry)
 	entity->uid = stat.st_uid;
 	entity->gid = stat.st_gid;
 	entity->size = stat.st_size;
+	temp = ft_itoa(entity->link_num);
+	len = ft_strlen(temp);
+	len > g_maxlinks ? g_maxlinks = len : 0;
+	free(temp);
+	len = ft_strlen(uid_to_name(entity));
+	len > g_maxuid ? g_maxuid = len : 0;
+	len = ft_strlen(gid_to_name(entity));
+	len > g_maxgid ? g_maxgid = len : 0;
+	temp = ft_itoa(entity->size);
+	len = ft_strlen(temp);
+	len > g_maxsize ? g_maxsize = len : 0;
+	free(temp);
 }
 
 void	entity_print(t_entlist *list, char *path)

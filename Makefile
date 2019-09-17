@@ -6,7 +6,7 @@
 #    By: hshawand <hshawand@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/04 16:37:05 by hshawand          #+#    #+#              #
-#    Updated: 2019/09/12 14:58:35 by hshawand         ###   ########.fr        #
+#    Updated: 2019/09/17 15:14:34 by hshawand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,6 +68,7 @@ srcs/libft/ft_lstdelone.o \
 srcs/libft/ft_lstiter.o \
 srcs/libft/ft_lstmap.o \
 srcs/libft/ft_lstnew.o \
+srcs/libft/ft_stroffcat.o
 
 SRCS = srcs/main.c \
 srcs/path.c \

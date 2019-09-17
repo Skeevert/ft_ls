@@ -6,7 +6,7 @@
 /*   By: hshawand <[hshawand@student.42.fr]>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 15:53:30 by hshawand          #+#    #+#             */
-/*   Updated: 2019/09/12 15:17:06 by hshawand         ###   ########.fr       */
+/*   Updated: 2019/09/17 16:16:45 by hshawand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # include <dirent.h>
 # include <limits.h>
 # include <pwd.h>
+# include <grp.h>
+# include <time.h>
 
 /*
  * g_options cheatsheet:
@@ -31,7 +33,12 @@
  * 0x10: -t
  */
 
-char						g_options;
+char					g_options;
+
+nlink_t					g_maxlinks;
+size_t					g_maxuid;
+size_t					g_maxgid;
+size_t					g_maxsize;
 
 typedef struct stat		t_stat;
 typedef struct dirent	t_dirent;
@@ -57,5 +64,7 @@ void					entity_add(t_entlist **start, t_entlist *new);
 void					entity_free(t_entlist *start);
 void					merge_sort(t_entlist **head_ref);
 void					list_init(t_entlist *ent);
+char					*uid_to_name(t_entlist *ent);
+char					*gid_to_name(t_entlist *ent);
 
 #endif

@@ -6,54 +6,48 @@
 /*   By: hshawand <[hshawand@student.42.fr]>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/12 12:11:15 by hshawand          #+#    #+#             */
-/*   Updated: 2019/09/12 15:36:43 by hshawand         ###   ########.fr       */
+/*   Updated: 2019/09/17 16:23:30 by hshawand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
-#include <stdio.h>
 
-void	print(char *str, size_t min_width, char mode)
+char	*uid_to_name(t_entlist *ent)
 {
-	size_t			len;
-	static char		buff[4096];
-	static char		*buff_ptr = buff;
+	struct passwd	*pw_ptr;
+	static char		numstr[10];
+	char			*num;
 
-	if (mode)
+	if (!(pw_ptr = getpwuid(ent->uid)))
 	{
-		write(1, buff, ft_strlen(buff));
-		buff_ptr = buff;
+		bzero(numstr, 10);
+		num = ft_itoa(ent->uid);
+		strncpy(numstr, num, 9);
+		free(num);
+		return (numstr);
 	}
 	else
-	{
-		len = ft_strlen(str);
-		if (buff_ptr + (len > min_width ? len : min_width) > buff + 4095)
-		{
-			write(1, buff, 4096);
-			buff_ptr = buff;
-		}
-		if (min_width > len)
-		{	
-			ft_memset(buff_ptr, ' ', min_width - len);
-			buff_ptr += (min_width - len);
-		}
-		ft_strcat(buff_ptr, str);
-		buff_ptr += len;
-	}
+		return pw_ptr->pw_name;
 }
 
-/*
-char	gruid_to_str(char *u_str, char *g_str, t_entlist *ent)
+char	*gid_to_name(t_entlist *ent)
 {
-	char	return_val;
+	struct group	*grp_ptr;
+	static char		numstr[10];
+	char			*num;
 
-	return_val = 0;
-	if (!(u_str = getpwuid(ent->uid)))
-		return_val |= 0x01;
-	if (!(g_str = getgrgid(ent->gid)))
-		return_val |= 0x02;
+	if (!(grp_ptr = getgrgid(ent->gid)))
+	{
+		bzero(numstr, 10);
+		num = ft_itoa(ent->gid);
+		strncpy(numstr, num, 9);
+		free(num);
+		return (numstr);
+	}
+	else
+		return grp_ptr->gr_name;
+
 }
-*/
 
 void	mode_to_str(char *str, t_entlist *ent)
 {
@@ -76,8 +70,25 @@ void	mode_to_str(char *str, t_entlist *ent)
 
 void	list_init(t_entlist *ent)
 {
-	char	mode[11];
+	char	mode[10000];
+	char	*temp;
 	
 	mode_to_str(mode, ent);	
-	printf("%s", mode);
+	temp = ft_itoa(ent->link_num);
+	ft_stroffcat(mode, temp, g_maxlinks + 1, 0);
+	free(temp);
+	ft_strcat(mode, " ");
+	ft_stroffcat(mode, uid_to_name(ent), g_maxuid + 1, 1);
+	ft_strcat(mode, " ");
+	ft_stroffcat(mode, gid_to_name(ent), g_maxgid + 1, 1);
+	ft_strcat(mode, " ");
+	temp = ft_itoa(ent->size);
+	ft_stroffcat(mode, temp, g_maxsize, 0);
+	free(temp);
+	ft_strcat(mode, " ");
+	ft_stroffcat(mode, 4 + ctime(&ent->time), 12, 0);
+	ft_strcat(mode, " ");
+	ft_strcat(mode, ent->ent_name);
+	ft_strcat(mode, "\n");
+	ft_putstr(mode);
 }
