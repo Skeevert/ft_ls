@@ -6,7 +6,7 @@
 /*   By: hshawand <[hshawand@student.42.fr]>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 15:55:11 by hshawand          #+#    #+#             */
-/*   Updated: 2019/09/17 16:05:59 by hshawand         ###   ########.fr       */
+/*   Updated: 2019/09/17 17:48:30 by hshawand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,9 @@ void	ft_option_init(int argc, char **argv)
 	int		i;
 
 	i = 1;
-	while (i < argc)
+	while (i < argc && argv[i][0] == '-' && argv[i][1] && argv[i][1] != '-')
 	{
-		if (argv[i][0] == '-' && argv[i][1])
-			ft_option_save(argv[i] + 1);
+		ft_option_save(argv[i] + 1);
 		i++;
 	}
 }
@@ -65,7 +64,7 @@ int		main(int argc, char **argv)
 	{
 		if (argv[i][0] != '-' || !argv[i][1])
 		{
-			path_init(argv[1]);
+			path_init(argv[i]);
 			path_count++;
 		}
 		i++;

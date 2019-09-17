@@ -6,11 +6,18 @@
 /*   By: hshawand <[hshawand@student.42.fr]>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 15:54:29 by hshawand          #+#    #+#             */
-/*   Updated: 2019/09/17 16:21:02 by hshawand         ###   ########.fr       */
+/*   Updated: 2019/09/17 17:29:33 by hshawand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
+
+char	*path_add(char *path, char *name)
+{
+	ft_strcat(path, "/");
+	ft_strcat(path, name);
+	return (path);
+}
 
 void	ft_recursion(t_entlist *new, char *path)
 {
@@ -22,20 +29,21 @@ void	ft_recursion(t_entlist *new, char *path)
 	{
 		if (ft_strlen(path_new) + ft_strlen(new->ent_name) + 1 < PATH_MAX)
 		{
-			ft_strcat(path_new, "/");
-			ft_strcat(path_new, new->ent_name);
+			path_add(path_new, new->ent_name);
 			path_init(path_new);
 		}
 	}
 }
 
-void	entity_fill(t_entlist *entity, t_dirent *entry)
+void	entity_fill(t_entlist *entity, t_dirent *entry, char *path)
 {
 	t_stat		stat;
 	size_t		len;
 	char 		*temp;
+	char		path_new[PATH_MAX];
 
-	lstat(entry->d_name, &stat);
+	ft_strcpy(path_new, path);
+	lstat(path_add(path_new, entry->d_name), &stat);
 	strcpy(entity->ent_name, entry->d_name);
 	entity->ent_mode = stat.st_mode;
 	entity->time = stat.st_mtime;
@@ -83,7 +91,7 @@ void	path_init(char *path)
 	while ((entry = readdir(folder))) /* Not sure if this works */
 	{
 		temp = entity_new();
-		entity_fill(temp, entry);
+		entity_fill(temp, entry, path);
 		entity_add(&list, temp);
 	}
 	merge_sort(&list);
