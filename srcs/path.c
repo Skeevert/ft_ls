@@ -6,17 +6,31 @@
 /*   By: hshawand <[hshawand@student.42.fr]>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 15:54:29 by hshawand          #+#    #+#             */
-/*   Updated: 2019/09/17 17:29:33 by hshawand         ###   ########.fr       */
+/*   Updated: 2019/09/18 13:28:21 by hshawand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-char	*path_add(char *path, char *name)
+void	global_init(t_entlist *entity)
 {
-	ft_strcat(path, "/");
-	ft_strcat(path, name);
-	return (path);
+	char	*temp;
+	size_t		len;
+
+	if (!(temp = ft_itoa(entity->link_num)))
+		return ;
+	len = ft_strlen(temp);
+	len > g_maxlinks ? g_maxlinks = len : 0;
+	free(temp);
+	len = ft_strlen(uid_to_name(entity));
+	len > g_maxuid ? g_maxuid = len : 0;
+	len = ft_strlen(gid_to_name(entity));
+	len > g_maxgid ? g_maxgid = len : 0;
+	if (!(temp = ft_itoa(entity->size)))
+		return ;
+	len = ft_strlen(temp);
+	len > g_maxsize ? g_maxsize = len : 0;
+	free(temp);
 }
 
 void	ft_recursion(t_entlist *new, char *path)
@@ -38,8 +52,6 @@ void	ft_recursion(t_entlist *new, char *path)
 void	entity_fill(t_entlist *entity, t_dirent *entry, char *path)
 {
 	t_stat		stat;
-	size_t		len;
-	char 		*temp;
 	char		path_new[PATH_MAX];
 
 	ft_strcpy(path_new, path);
@@ -51,28 +63,17 @@ void	entity_fill(t_entlist *entity, t_dirent *entry, char *path)
 	entity->uid = stat.st_uid;
 	entity->gid = stat.st_gid;
 	entity->size = stat.st_size;
-	temp = ft_itoa(entity->link_num);
-	len = ft_strlen(temp);
-	len > g_maxlinks ? g_maxlinks = len : 0;
-	free(temp);
-	len = ft_strlen(uid_to_name(entity));
-	len > g_maxuid ? g_maxuid = len : 0;
-	len = ft_strlen(gid_to_name(entity));
-	len > g_maxgid ? g_maxgid = len : 0;
-	temp = ft_itoa(entity->size);
-	len = ft_strlen(temp);
-	len > g_maxsize ? g_maxsize = len : 0;
-	free(temp);
+	entity->blocks = stat.st_blocks;
+	global_init(entity);
 }
 
 void	entity_print(t_entlist *list, char *path)
 {
-	path = 0;
-
+	g_options & 0x01 ? print_total(list) : 0;	
 	while (list)
 	{
 		if (list->ent_name[0] != '.' || g_options & 0x04)
-			g_options & 0x01 ? list_init(list) : 0;
+			g_options & 0x01 ? list_init(list, path) : 0;
 		list = list->next;
 	}
 }

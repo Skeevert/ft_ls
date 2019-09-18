@@ -6,7 +6,7 @@
 /*   By: hshawand <[hshawand@student.42.fr]>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 15:53:30 by hshawand          #+#    #+#             */
-/*   Updated: 2019/09/17 16:16:45 by hshawand         ###   ########.fr       */
+/*   Updated: 2019/09/18 13:32:51 by hshawand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct 			s_entlist
 	gid_t				gid;
 	off_t				size;
 	struct s_entlist	*next;
+	blkcnt_t			blocks;
 }						t_entlist;
 
 void					path_init(char *path);
@@ -63,8 +64,11 @@ t_entlist				*entity_new();
 void					entity_add(t_entlist **start, t_entlist *new);
 void					entity_free(t_entlist *start);
 void					merge_sort(t_entlist **head_ref);
-void					list_init(t_entlist *ent);
+void					list_init(t_entlist *ent, char *path);
 char					*uid_to_name(t_entlist *ent);
 char					*gid_to_name(t_entlist *ent);
+char					*path_add(char *path, char *name);
+void					print_total(t_entlist *ent);
+char					*print_link(t_entlist *ent, char *path);
 
 #endif

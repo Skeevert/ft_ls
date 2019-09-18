@@ -6,7 +6,7 @@
 /*   By: hshawand <[hshawand@student.42.fr]>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/12 12:11:15 by hshawand          #+#    #+#             */
-/*   Updated: 2019/09/17 16:23:30 by hshawand         ###   ########.fr       */
+/*   Updated: 2019/09/18 13:31:58 by hshawand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,12 @@ void	mode_to_str(char *str, t_entlist *ent)
 	str[10] = 0;
 }
 
-void	list_init(t_entlist *ent)
+void	list_init(t_entlist *ent, char *path)
 {
 	char	mode[10000];
 	char	*temp;
 	
-	mode_to_str(mode, ent);	
+	mode_to_str(mode, ent);
 	temp = ft_itoa(ent->link_num);
 	ft_stroffcat(mode, temp, g_maxlinks + 1, 0);
 	free(temp);
@@ -89,6 +89,7 @@ void	list_init(t_entlist *ent)
 	ft_stroffcat(mode, 4 + ctime(&ent->time), 12, 0);
 	ft_strcat(mode, " ");
 	ft_strcat(mode, ent->ent_name);
+	S_ISLNK(ent->ent_mode) ? ft_strcat(mode, print_link(ent, path)) : 0;
 	ft_strcat(mode, "\n");
 	ft_putstr(mode);
 }
