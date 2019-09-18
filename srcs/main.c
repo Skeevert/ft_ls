@@ -6,7 +6,7 @@
 /*   By: hshawand <[hshawand@student.42.fr]>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 15:55:11 by hshawand          #+#    #+#             */
-/*   Updated: 2019/09/18 14:08:32 by hshawand         ###   ########.fr       */
+/*   Updated: 2019/09/18 14:36:28 by hshawand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	max_init()
 	g_maxuid = 0;
 	g_maxgid = 0;
 	g_maxsize = 0;
+	g_options = 0;
 }
 
 void	ft_option_init(int argc, char **argv)
@@ -65,7 +66,6 @@ int		main(int argc, char **argv)
 	int		i;
 	int		path_count;
 
-	g_options = 0;
 	max_init();
 	path_count = 0;
 	i = 1;

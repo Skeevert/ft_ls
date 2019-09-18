@@ -6,7 +6,7 @@
 /*   By: hshawand <[hshawand@student.42.fr]>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 15:54:29 by hshawand          #+#    #+#             */
-/*   Updated: 2019/09/18 14:00:01 by hshawand         ###   ########.fr       */
+/*   Updated: 2019/09/18 14:41:00 by hshawand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	ft_recursion(t_entlist *new, char *path)
 {
 	char	path_new[PATH_MAX];
 
+	g_options |= 0x20;
 	ft_strcpy(path_new, path);
 	if (ft_strcmp(new->ent_name, ".") && ft_strcmp(new->ent_name, "..") &&
 			(new->ent_name[0] != '.' || g_options & 0x04))
