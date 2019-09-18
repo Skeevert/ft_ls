@@ -6,7 +6,7 @@
 /*   By: hshawand <[hshawand@student.42.fr]>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 15:53:30 by hshawand          #+#    #+#             */
-/*   Updated: 2019/09/18 16:17:41 by hshawand         ###   ########.fr       */
+/*   Updated: 2019/09/18 16:41:46 by hshawand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <pwd.h>
 # include <grp.h>
 # include <time.h>
+# include <stdio.h>
 
 /*
  * g_options cheatsheet:

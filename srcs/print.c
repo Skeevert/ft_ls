@@ -6,7 +6,7 @@
 /*   By: hshawand <[hshawand@student.42.fr]>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/12 12:11:15 by hshawand          #+#    #+#             */
-/*   Updated: 2019/09/18 16:18:42 by hshawand         ###   ########.fr       */
+/*   Updated: 2019/09/18 16:46:31 by hshawand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,8 @@ void	list_init(t_entlist *ent, char *path)
 	char	*temp;
 	
 	mode_to_str(mode, ent);
-	temp = ft_itoa(ent->link_num);
+	if (!(temp = ft_itoa(ent->link_num)))
+		return perror("malloc");
 	ft_stroffcat(mode, temp, g_maxlinks + 1, 0);
 	free(temp);
 	ft_strcat(mode, " ");
@@ -91,7 +92,8 @@ void	list_init(t_entlist *ent, char *path)
 	ft_strcat(mode, " ");
 	ft_stroffcat(mode, gid_to_name(ent), g_maxgid + 1, 1);
 	ft_strcat(mode, " ");
-	temp = ft_itoa(ent->size);
+	if (!(temp = ft_itoa(ent->size)))
+		return perror("malloc");
 	ft_stroffcat(mode, temp, g_maxsize, 0);
 	free(temp);
 	ft_strcat(mode, " ");
