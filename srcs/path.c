@@ -6,7 +6,7 @@
 /*   By: hshawand <[hshawand@student.42.fr]>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 15:54:29 by hshawand          #+#    #+#             */
-/*   Updated: 2019/09/18 14:41:00 by hshawand         ###   ########.fr       */
+/*   Updated: 2019/09/18 16:16:55 by hshawand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,8 @@ void	entity_print(t_entlist *list, char *path)
 	while (list)
 	{
 		if (list->ent_name[0] != '.' || g_options & 0x04)
-			g_options & 0x01 ? list_init(list, path) : 0;
+			g_options & 0x01 ? list_init(list, path) :
+				simple_print(list);
 		list = list->next;
 	}
 }

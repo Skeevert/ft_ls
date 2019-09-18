@@ -6,7 +6,7 @@
 /*   By: hshawand <[hshawand@student.42.fr]>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/12 12:11:15 by hshawand          #+#    #+#             */
-/*   Updated: 2019/09/18 13:31:58 by hshawand         ###   ########.fr       */
+/*   Updated: 2019/09/18 16:18:42 by hshawand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,15 @@ void	mode_to_str(char *str, t_entlist *ent)
 	ent->ent_mode & S_IWOTH ? str[8] = 'w' : 0;
 	ent->ent_mode & S_IXOTH ? str[9] = 'x' : 0;
 	str[10] = 0;
+}
+
+void	simple_print(t_entlist *list)
+{
+	char	output[258];
+		
+	ft_strcpy(output, list->ent_name);
+	ft_strcat(output, "\n");
+	ft_putstr(output);
 }
 
 void	list_init(t_entlist *ent, char *path)

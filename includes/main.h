@@ -6,7 +6,7 @@
 /*   By: hshawand <[hshawand@student.42.fr]>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 15:53:30 by hshawand          #+#    #+#             */
-/*   Updated: 2019/09/18 16:03:43 by hshawand         ###   ########.fr       */
+/*   Updated: 2019/09/18 16:17:41 by hshawand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,6 @@ void					print_total(t_entlist *ent);
 char					*print_link(t_entlist *ent, char *path);
 void					print_path(char *path);
 char					**sort_params(int n, char **arr);
+void					simple_print(t_entlist *list);
 
 #endif
