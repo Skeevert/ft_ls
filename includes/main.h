@@ -6,7 +6,7 @@
 /*   By: hshawand <[hshawand@student.42.fr]>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 15:53:30 by hshawand          #+#    #+#             */
-/*   Updated: 2019/09/18 13:32:51 by hshawand         ###   ########.fr       */
+/*   Updated: 2019/09/18 14:01:44 by hshawand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,6 @@ char					*gid_to_name(t_entlist *ent);
 char					*path_add(char *path, char *name);
 void					print_total(t_entlist *ent);
 char					*print_link(t_entlist *ent, char *path);
+void					print_path(char *path);
 
 #endif

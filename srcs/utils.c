@@ -6,7 +6,7 @@
 /*   By: hshawand <[hshawand@student.42.fr]>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 12:34:28 by hshawand          #+#    #+#             */
-/*   Updated: 2019/09/18 13:32:50 by hshawand         ###   ########.fr       */
+/*   Updated: 2019/09/18 14:14:26 by hshawand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,14 @@ char	*print_link(t_entlist *ent, char *path)
 	ft_strcpy(output, " -> ");
 	readlink(path_new, output + 4, 256);
 	return (output);
-}	
+}
+
+void	print_path(char *path)
+{
+	char	output[PATH_MAX + 3];
+
+	ft_bzero(output, PATH_MAX + 2);
+	ft_strcpy(output, path);
+	ft_strcat(output, ":\n");
+	ft_putstr(output);
+}

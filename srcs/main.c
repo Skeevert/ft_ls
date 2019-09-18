@@ -6,7 +6,7 @@
 /*   By: hshawand <[hshawand@student.42.fr]>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 15:55:11 by hshawand          #+#    #+#             */
-/*   Updated: 2019/09/17 17:48:30 by hshawand         ###   ########.fr       */
+/*   Updated: 2019/09/18 14:08:32 by hshawand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,23 @@ void	max_init()
 void	ft_option_init(int argc, char **argv)
 {
 	int		i;
+	int 	path_count;
 
 	i = 1;
+	path_count = 0;
 	while (i < argc && argv[i][0] == '-' && argv[i][1] && argv[i][1] != '-')
 	{
 		ft_option_save(argv[i] + 1);
 		i++;
 	}
+	i = 1;
+	while (i < argc)
+	{
+		if (argv[i][0] != '-' || !argv[i][1])
+			path_count++;
+		i++;
+	}
+	path_count > 1 ? g_options |= 0x20 : 0;
 }
 
 int		main(int argc, char **argv)
@@ -66,6 +76,7 @@ int		main(int argc, char **argv)
 		{
 			path_init(argv[i]);
 			path_count++;
+			i < argc - 1 ? write (1, "\n", 1) : 0;
 		}
 		i++;
 	}

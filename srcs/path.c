@@ -6,7 +6,7 @@
 /*   By: hshawand <[hshawand@student.42.fr]>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 15:54:29 by hshawand          #+#    #+#             */
-/*   Updated: 2019/09/18 13:28:21 by hshawand         ###   ########.fr       */
+/*   Updated: 2019/09/18 14:00:01 by hshawand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	entity_fill(t_entlist *entity, t_dirent *entry, char *path)
 
 void	entity_print(t_entlist *list, char *path)
 {
+	g_options & 0x20 ? print_path(path) : 0;
 	g_options & 0x01 ? print_total(list) : 0;	
 	while (list)
 	{
