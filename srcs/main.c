@@ -6,7 +6,7 @@
 /*   By: hshawand <[hshawand@student.42.fr]>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 15:55:11 by hshawand          #+#    #+#             */
-/*   Updated: 2019/09/18 14:36:28 by hshawand         ###   ########.fr       */
+/*   Updated: 2019/09/18 16:03:20 by hshawand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int		main(int argc, char **argv)
 	path_count = 0;
 	i = 1;
 	ft_option_init(argc, argv);
+	argv = sort_params(argc, argv);
 	while (i < argc)
 	{
 		if (argv[i][0] != '-' || !argv[i][1])

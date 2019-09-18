@@ -6,7 +6,7 @@
 /*   By: hshawand <[hshawand@student.42.fr]>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 12:34:28 by hshawand          #+#    #+#             */
-/*   Updated: 2019/09/18 14:14:26 by hshawand         ###   ########.fr       */
+/*   Updated: 2019/09/18 16:07:42 by hshawand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,29 @@ void	print_path(char *path)
 	ft_strcpy(output, path);
 	ft_strcat(output, ":\n");
 	ft_putstr(output);
+}
+
+char	**sort_params(int n, char **arr)
+{
+	int		i;
+	int		j;
+	char	*temp;
+
+	i = 0;
+	j = 1;
+	while (i < n - 1)
+	{
+		while (j < n - i - 1)
+		{
+			if (ft_strcmp(arr[j], arr[j + 1]) > 0)
+			{
+				temp = arr[j + 1];
+				arr[j + 1] = arr[j];
+				arr[j] = temp;
+			}
+			j++;
+		}
+		i++;
+	}
+	return (arr);
 }
