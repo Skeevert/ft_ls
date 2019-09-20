@@ -6,7 +6,7 @@
 /*   By: hshawand <[hshawand@student.42.fr]>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 15:53:30 by hshawand          #+#    #+#             */
-/*   Updated: 2019/09/18 16:41:46 by hshawand         ###   ########.fr       */
+/*   Updated: 2019/09/20 13:08:08 by hshawand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # include <grp.h>
 # include <time.h>
 # include <stdio.h>
+
+# define BUFF_SIZE 4096
 
 /*
  * g_options cheatsheet:
@@ -58,6 +60,8 @@ typedef struct 			s_entlist
 	struct s_entlist	*next;
 	blkcnt_t			blocks;
 }						t_entlist;
+
+void					buff_management(char *str, char mode);
 
 void					path_init(char *path);
 

@@ -6,7 +6,7 @@
 /*   By: hshawand <[hshawand@student.42.fr]>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/12 12:11:15 by hshawand          #+#    #+#             */
-/*   Updated: 2019/09/18 16:46:31 by hshawand         ###   ########.fr       */
+/*   Updated: 2019/09/20 13:07:27 by hshawand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	simple_print(t_entlist *list)
 		
 	ft_strcpy(output, list->ent_name);
 	ft_strcat(output, "\n");
-	ft_putstr(output);
+	buff_management(output, 0);
 }
 
 void	list_init(t_entlist *ent, char *path)
@@ -102,5 +102,5 @@ void	list_init(t_entlist *ent, char *path)
 	ft_strcat(mode, ent->ent_name);
 	S_ISLNK(ent->ent_mode) ? ft_strcat(mode, print_link(ent, path)) : 0;
 	ft_strcat(mode, "\n");
-	ft_putstr(mode);
+	buff_management(mode, 0);
 }
