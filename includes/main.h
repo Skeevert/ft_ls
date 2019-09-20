@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hshawand <[hshawand@student.42.fr]>        +#+  +:+       +#+        */
+/*   By: hshawand <hshawand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/30 15:53:30 by hshawand          #+#    #+#             */
-/*   Updated: 2019/09/20 13:08:08 by hshawand         ###   ########.fr       */
+/*   Created: 2019/09/20 13:32:29 by hshawand          #+#    #+#             */
+/*   Updated: 2019/09/20 13:47:32 by hshawand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,6 @@
 
 # define BUFF_SIZE 4096
 
-/*
- * g_options cheatsheet:
- * 0x01: -l
- * 0x02: -R
- * 0x04: -a
- * 0x08: -r
- * 0x10: -t
- */
-
 char					g_options;
 
 nlink_t					g_maxlinks;
@@ -48,7 +39,7 @@ typedef struct dirent	t_dirent;
 typedef struct passwd	t_passwd;
 typedef struct group	t_group;
 
-typedef struct 			s_entlist
+typedef struct			s_entlist
 {
 	char				ent_name[256];
 	mode_t				ent_mode;

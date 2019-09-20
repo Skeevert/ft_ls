@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hshawand <[hshawand@student.42.fr]>        +#+  +:+       +#+        */
+/*   By: hshawand <hshawand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/30 15:55:11 by hshawand          #+#    #+#             */
-/*   Updated: 2019/09/20 13:07:20 by hshawand         ###   ########.fr       */
+/*   Created: 2019/09/20 13:33:07 by hshawand          #+#    #+#             */
+/*   Updated: 2019/09/20 13:38:36 by hshawand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_option_save(char *str)
 {
-	while(*str)
+	while (*str)
 	{
 		if (*str == 'l')
 			g_options |= 0x01;
@@ -30,7 +30,7 @@ void	ft_option_save(char *str)
 	}
 }
 
-void	max_init()
+void	max_init(void)
 {
 	g_maxlinks = 0;
 	g_maxuid = 0;
@@ -42,7 +42,7 @@ void	max_init()
 void	ft_option_init(int argc, char **argv)
 {
 	int		i;
-	int 	path_count;
+	int		path_count;
 
 	i = 1;
 	path_count = 0;
@@ -77,7 +77,7 @@ int		main(int argc, char **argv)
 		{
 			path_init(argv[i]);
 			path_count++;
-			i < argc - 1 ? write (1, "\n", 1) : 0;
+			i < argc - 1 ? write(1, "\n", 1) : 0;
 		}
 		i++;
 	}

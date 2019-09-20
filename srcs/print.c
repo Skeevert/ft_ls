@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hshawand <[hshawand@student.42.fr]>        +#+  +:+       +#+        */
+/*   By: hshawand <hshawand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/12 12:11:15 by hshawand          #+#    #+#             */
-/*   Updated: 2019/09/20 13:07:27 by hshawand         ###   ########.fr       */
+/*   Updated: 2019/09/20 13:45:45 by hshawand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*uid_to_name(t_entlist *ent)
 		return (numstr);
 	}
 	else
-		return pw_ptr->pw_name;
+		return (pw_ptr->pw_name);
 }
 
 char	*gid_to_name(t_entlist *ent)
@@ -45,8 +45,7 @@ char	*gid_to_name(t_entlist *ent)
 		return (numstr);
 	}
 	else
-		return grp_ptr->gr_name;
-
+		return (grp_ptr->gr_name);
 }
 
 void	mode_to_str(char *str, t_entlist *ent)
@@ -71,7 +70,7 @@ void	mode_to_str(char *str, t_entlist *ent)
 void	simple_print(t_entlist *list)
 {
 	char	output[258];
-		
+
 	ft_strcpy(output, list->ent_name);
 	ft_strcat(output, "\n");
 	buff_management(output, 0);
@@ -81,10 +80,10 @@ void	list_init(t_entlist *ent, char *path)
 {
 	char	mode[10000];
 	char	*temp;
-	
+
 	mode_to_str(mode, ent);
 	if (!(temp = ft_itoa(ent->link_num)))
-		return perror("malloc");
+		return (perror("malloc"));
 	ft_stroffcat(mode, temp, g_maxlinks + 1, 0);
 	free(temp);
 	ft_strcat(mode, " ");
@@ -93,7 +92,7 @@ void	list_init(t_entlist *ent, char *path)
 	ft_stroffcat(mode, gid_to_name(ent), g_maxgid + 1, 1);
 	ft_strcat(mode, " ");
 	if (!(temp = ft_itoa(ent->size)))
-		return perror("malloc");
+		return (perror("malloc"));
 	ft_stroffcat(mode, temp, g_maxsize, 0);
 	free(temp);
 	ft_strcat(mode, " ");

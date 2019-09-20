@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hshawand <[hshawand@student.42.fr]>        +#+  +:+       +#+        */
+/*   By: hshawand <hshawand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 15:54:29 by hshawand          #+#    #+#             */
-/*   Updated: 2019/09/20 13:07:29 by hshawand         ###   ########.fr       */
+/*   Updated: 2019/09/20 13:49:43 by hshawand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	global_init(t_entlist *entity)
 	size_t	len;
 
 	if (!(temp = ft_itoa(entity->link_num)))
-		return perror("malloc");
+		return (perror("malloc"));
 	len = ft_strlen(temp);
 	len > g_maxlinks ? g_maxlinks = len : 0;
 	free(temp);
@@ -27,7 +27,7 @@ void	global_init(t_entlist *entity)
 	len = ft_strlen(gid_to_name(entity));
 	len > g_maxgid ? g_maxgid = len : 0;
 	if (!(temp = ft_itoa(entity->size)))
-		return perror("malloc");
+		return (perror("malloc"));
 	len = ft_strlen(temp);
 	len > g_maxsize ? g_maxsize = len : 0;
 	free(temp);
@@ -71,7 +71,7 @@ void	entity_fill(t_entlist *entity, t_dirent *entry, char *path)
 void	entity_print(t_entlist *list, char *path)
 {
 	g_options & 0x20 ? print_path(path) : 0;
-	g_options & 0x01 ? print_total(list) : 0;	
+	g_options & 0x01 ? print_total(list) : 0;
 	while (list)
 	{
 		if (list->ent_name[0] != '.' || g_options & 0x04)
@@ -88,18 +88,17 @@ void	path_init(char *path)
 	t_entlist	*list;
 	t_entlist	*temp;
 
-	folder = opendir(path);
-	if (!folder)
-		return perror(path); /* TODO: ADD ERROR MANAGEMENT */
+	if (!(folder = opendir(path)))
+		return (perror(path));
 	list = 0;
-	while ((entry = readdir(folder))) /* Not sure if this works */
+	while ((entry = readdir(folder)))
 	{
 		temp = entity_new();
 		entity_fill(temp, entry, path);
 		entity_add(&list, temp);
 	}
 	merge_sort(&list);
-	entity_print(list, path); /* TODO: ADD FLAG MANAGEMENT */
+	entity_print(list, path);
 	temp = list;
 	while (temp)
 	{

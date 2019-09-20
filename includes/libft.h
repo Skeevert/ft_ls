@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hshawand <hshawand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/04 10:09:48 by hshawand          #+#    #+#             */
-/*   Updated: 2019/09/17 15:15:38 by hshawand         ###   ########.fr       */
+/*   Created: 2019/09/20 13:32:15 by hshawand          #+#    #+#             */
+/*   Updated: 2019/09/20 13:34:39 by hshawand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,8 @@ void				ft_putchar_fd(char c, int fd);
 void				ft_putstr_fd(char const *s, int fd);
 void				ft_putendl_fd(char const *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
-char				*ft_stroffcat(char *dst, const char *src, size_t num, char mode);
+char				*ft_stroffcat(char *dst, const char *src, size_t num,
+	char mode);
 
 typedef struct		s_list
 {

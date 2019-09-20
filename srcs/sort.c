@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hshawand <[hshawand@student.42.fr]>        +#+  +:+       +#+        */
+/*   By: hshawand <hshawand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 13:34:24 by hshawand          #+#    #+#             */
-/*   Updated: 2019/09/10 15:07:18 by hshawand         ###   ########.fr       */
+/*   Updated: 2019/09/20 13:41:24 by hshawand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int			list_cmp(t_entlist *a, t_entlist *b)
 {
 	int		result;
+
 	if (!(g_options & 0x10))
 		result = ft_strcmp(a->ent_name, b->ent_name);
 	else
@@ -27,7 +28,7 @@ int			list_cmp(t_entlist *a, t_entlist *b)
 }
 
 void		front_back_split(t_entlist *source, t_entlist **front_ref,
-		t_entlist **back_ref)
+	t_entlist **back_ref)
 {
 	t_entlist	*fast;
 	t_entlist	*slow;
@@ -47,7 +48,6 @@ void		front_back_split(t_entlist *source, t_entlist **front_ref,
 	*back_ref = slow->next;
 	slow->next = 0;
 }
-
 
 t_entlist	*sorted_merge(t_entlist *a, t_entlist *b)
 {
@@ -87,5 +87,3 @@ void		merge_sort(t_entlist **head_ref)
 	merge_sort(&b);
 	*head_ref = sorted_merge(a, b);
 }
-
-

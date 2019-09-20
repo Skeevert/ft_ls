@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   buffer.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hshawand <[hshawand@student.42.fr]>        +#+  +:+       +#+        */
+/*   By: hshawand <hshawand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/20 13:03:10 by hshawand          #+#    #+#             */
-/*   Updated: 2019/09/20 13:07:22 by hshawand         ###   ########.fr       */
+/*   Created: 2019/09/20 13:32:53 by hshawand          #+#    #+#             */
+/*   Updated: 2019/09/20 13:35:52 by hshawand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-void    buff_management(char *str, char mode)
+void	buff_management(char *str, char mode)
 {
 	static char buff[BUFF_SIZE];
 	static char *buff_ptr = buff;

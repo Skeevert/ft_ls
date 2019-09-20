@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hshawand <[hshawand@student.42.fr]>        +#+  +:+       +#+        */
+/*   By: hshawand <hshawand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 12:34:28 by hshawand          #+#    #+#             */
-/*   Updated: 2019/09/18 16:47:20 by hshawand         ###   ########.fr       */
+/*   Updated: 2019/09/20 13:49:43 by hshawand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	print_total(t_entlist *ent)
 	}
 	temp = ft_itoa(total);
 	if (!temp)
-		return perror("malloc");
+		return (perror("malloc"));
 	ft_strcpy(output, "total ");
 	ft_strcat(output, temp);
 	ft_strcat(output, "\n");

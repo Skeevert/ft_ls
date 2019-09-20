@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   lists.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hshawand <[hshawand@student.42.fr]>        +#+  +:+       +#+        */
+/*   By: hshawand <hshawand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/04 12:33:53 by hshawand          #+#    #+#             */
-/*   Updated: 2019/09/18 16:50:19 by hshawand         ###   ########.fr       */
+/*   Created: 2019/09/20 13:33:01 by hshawand          #+#    #+#             */
+/*   Updated: 2019/09/20 13:37:52 by hshawand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-t_entlist		*entity_new()
+t_entlist		*entity_new(void)
 {
 	t_entlist	*new;
 
