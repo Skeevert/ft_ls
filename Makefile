@@ -6,7 +6,7 @@
 #    By: hshawand <hshawand@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/04 16:37:05 by hshawand          #+#    #+#              #
-#    Updated: 2019/09/20 13:05:14 by hshawand         ###   ########.fr        #
+#    Updated: 2019/09/20 17:20:38 by hshawand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ srcs/libft/ft_isprint.o \
 srcs/libft/ft_tolower.o \
 srcs/libft/ft_toupper.o \
 srcs/libft/ft_itoa.o \
+srcs/libft/ft_stoa.o \
 srcs/libft/ft_memalloc.o \
 srcs/libft/ft_memdel.o \
 srcs/libft/ft_putchar_fd.o \

@@ -6,7 +6,7 @@
 /*   By: hshawand <hshawand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 15:54:29 by hshawand          #+#    #+#             */
-/*   Updated: 2019/09/20 13:49:43 by hshawand         ###   ########.fr       */
+/*   Updated: 2019/09/20 17:13:48 by hshawand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	global_init(t_entlist *entity)
 	char	*temp;
 	size_t	len;
 
-	if (!(temp = ft_itoa(entity->link_num)))
+	if (!(temp = ft_stoa(entity->link_num)))
 		return (perror("malloc"));
 	len = ft_strlen(temp);
 	len > g_maxlinks ? g_maxlinks = len : 0;
@@ -26,7 +26,7 @@ void	global_init(t_entlist *entity)
 	len > g_maxuid ? g_maxuid = len : 0;
 	len = ft_strlen(gid_to_name(entity));
 	len > g_maxgid ? g_maxgid = len : 0;
-	if (!(temp = ft_itoa(entity->size)))
+	if (!(temp = ft_stoa(entity->size)))
 		return (perror("malloc"));
 	len = ft_strlen(temp);
 	len > g_maxsize ? g_maxsize = len : 0;

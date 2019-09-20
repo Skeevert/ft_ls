@@ -6,7 +6,7 @@
 /*   By: hshawand <hshawand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 12:34:28 by hshawand          #+#    #+#             */
-/*   Updated: 2019/09/20 13:49:43 by hshawand         ###   ########.fr       */
+/*   Updated: 2019/09/20 17:14:39 by hshawand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	print_total(t_entlist *ent)
 		total += ent->blocks;
 		ent = ent->next;
 	}
-	temp = ft_itoa(total);
+	temp = ft_stoa(total);
 	if (!temp)
 		return (perror("malloc"));
 	ft_strcpy(output, "total ");
