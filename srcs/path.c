@@ -6,7 +6,7 @@
 /*   By: hshawand <hshawand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 15:54:29 by hshawand          #+#    #+#             */
-/*   Updated: 2019/09/22 14:00:13 by hshawand         ###   ########.fr       */
+/*   Updated: 2019/09/22 14:55:30 by hshawand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	ft_recursion(t_entlist *new, char *path)
 	{
 		if (ft_strlen(path_new) + ft_strlen(new->ent_name) + 1 < PATH_MAX)
 		{
+			buff_management("\n", 0);
 			path_add(path_new, new->ent_name);
 			path_init(path_new);
 		}
