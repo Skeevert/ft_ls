@@ -6,7 +6,7 @@
 /*   By: hshawand <hshawand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 12:34:28 by hshawand          #+#    #+#             */
-/*   Updated: 2019/09/20 17:14:39 by hshawand         ###   ########.fr       */
+/*   Updated: 2019/09/22 14:16:17 by hshawand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	print_total(t_entlist *ent)
 	ft_strcat(output, temp);
 	ft_strcat(output, "\n");
 	free(temp);
-	ft_putstr(output);
+	buff_management(output, 0);
 }
 
 char	*print_link(t_entlist *ent, char *path)
@@ -61,7 +61,7 @@ void	print_path(char *path)
 	ft_bzero(output, PATH_MAX + 2);
 	ft_strcpy(output, path);
 	ft_strcat(output, ":\n");
-	ft_putstr(output);
+	buff_management(output, 0);
 }
 
 char	**sort_params(int n, char **arr)

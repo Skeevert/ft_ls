@@ -6,7 +6,7 @@
 /*   By: hshawand <hshawand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/20 13:33:07 by hshawand          #+#    #+#             */
-/*   Updated: 2019/09/20 13:38:36 by hshawand         ###   ########.fr       */
+/*   Updated: 2019/09/22 14:24:42 by hshawand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int		main(int argc, char **argv)
 		{
 			path_init(argv[i]);
 			path_count++;
-			i < argc - 1 ? write(1, "\n", 1) : 0;
+			i < argc - 1 ? buff_management("\n", 0) : 0;
 		}
 		i++;
 	}
