@@ -6,7 +6,7 @@
 /*   By: hshawand <hshawand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/20 13:33:07 by hshawand          #+#    #+#             */
-/*   Updated: 2019/09/22 14:24:42 by hshawand         ###   ########.fr       */
+/*   Updated: 2019/09/22 14:48:08 by hshawand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,10 @@ void	max_init(void)
 	g_options = 0;
 }
 
-void	ft_option_init(int argc, char **argv)
+int		ft_option_init(int argc, char **argv)
 {
 	int		i;
+	int		i_ret;
 	int		path_count;
 
 	i = 1;
@@ -51,6 +52,7 @@ void	ft_option_init(int argc, char **argv)
 		ft_option_save(argv[i] + 1);
 		i++;
 	}
+	i_ret = i;
 	i = 1;
 	while (i < argc)
 	{
@@ -59,6 +61,7 @@ void	ft_option_init(int argc, char **argv)
 		i++;
 	}
 	path_count > 1 ? g_options |= 0x20 : 0;
+	return (i_ret);
 }
 
 int		main(int argc, char **argv)
@@ -69,16 +72,14 @@ int		main(int argc, char **argv)
 	max_init();
 	path_count = 0;
 	i = 1;
-	ft_option_init(argc, argv);
-	argv = sort_params(argc, argv);
+	i = ft_option_init(argc, argv);
+	argv = sort_params(argc - i, argv + i);
+	argv = argv - i;
 	while (i < argc)
 	{
-		if (argv[i][0] != '-' || !argv[i][1])
-		{
-			path_init(argv[i]);
-			path_count++;
-			i < argc - 1 ? buff_management("\n", 0) : 0;
-		}
+		path_init(argv[i]);
+		path_count++;
+		i < argc - 1 ? buff_management("\n", 0) : 0;
 		i++;
 	}
 	if (path_count == 0)
