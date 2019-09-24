@@ -66,12 +66,12 @@ void	print_path(char *path)
 
 char	**sort_params(int n, char **arr)
 {
-	int		i;
-	int		j;
+	int	i;
+	int	j;
 	char	*temp;
 
 	i = 0;
-	j = 1;
+	j = 0;
 	while (i < n - 1)
 	{
 		while (j < n - i - 1)
@@ -85,6 +85,6 @@ char	**sort_params(int n, char **arr)
 			j++;
 		}
 		i++;
-	}
+	}	
 	return (arr);
 }

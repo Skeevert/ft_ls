@@ -71,7 +71,6 @@ int		main(int argc, char **argv)
 
 	max_init();
 	path_count = 0;
-	i = 1;
 	i = ft_option_init(argc, argv);
 	argv = sort_params(argc - i, argv + i);
 	argv = argv - i;
