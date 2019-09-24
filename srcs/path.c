@@ -56,17 +56,20 @@ void	entity_fill(t_entlist *entity, t_dirent *entry, char *path)
 	t_stat		stat;
 	char		path_new[PATH_MAX];
 
-	ft_strcpy(path_new, path);
-	lstat(path_add(path_new, entry->d_name), &stat);
-	strcpy(entity->ent_name, entry->d_name);
-	entity->ent_mode = stat.st_mode;
-	entity->time = stat.st_mtime;
-	entity->link_num = stat.st_nlink;
-	entity->uid = stat.st_uid;
-	entity->gid = stat.st_gid;
-	entity->size = stat.st_size;
-	entity->blocks = stat.st_blocks;
-	global_init(entity);
+	if (entity)
+	{
+		ft_strcpy(path_new, path);
+		lstat(path_add(path_new, entry->d_name), &stat);
+		strcpy(entity->ent_name, entry->d_name);
+		entity->ent_mode = stat.st_mode;
+		entity->time = stat.st_mtime;
+		entity->link_num = stat.st_nlink;
+		entity->uid = stat.st_uid;
+		entity->gid = stat.st_gid;
+		entity->size = stat.st_size;
+		entity->blocks = stat.st_blocks;
+		global_init(entity);
+	}
 }
 
 void	entity_print(t_entlist *list, char *path)
